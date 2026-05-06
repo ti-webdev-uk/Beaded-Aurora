@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beaded Aurora — Handcrafted Bead Art from Lincolnshire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F3EE;
+    --deep: #1C1A17;
+    --warm: #8C6E52;
+    --gold: #C9A96E;
+    --aurora-teal: #5BA8A0;
+    --aurora-violet: #8B78B3;
+    --aurora-rose: #C47E8A;
+    --muted: #9E9588;
+    --border: rgba(28,26,23,0.12);
+    --border-hover: rgba(28,26,23,0.3);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(247,243,238,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 0.5px solid var(--border);
+    transition: padding 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--deep);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--aurora-teal); font-style: italic; }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--deep);
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+
+  .nav-cta {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--deep);
+    text-decoration: none;
+    border: 0.5px solid var(--border-hover);
+    padding: 0.5rem 1.2rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--deep); color: var(--cream); }
+
+  /* HERO */
+  .hero {
+    min-height: 50vh;
+    max-height: 55vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem 4rem 2.5rem 5rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 5vw, 5rem);
+    line-height: 1.08;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--aurora-teal);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--deep);
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    opacity: 0.75;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--deep);
+    color: var(--cream);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--warm); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-block;
+    color: var(--deep);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    border: 0.5px solid var(--border-hover);
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { background: var(--deep); color: var(--cream); }
+
+  .hero-badges {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.82rem;
+    color: var(--deep);
+    opacity: 0.75;
+  }
+
+  .hero-badge::before {
+    content: '✦';
+    color: var(--gold);
+    font-size: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    background: rgba(247,243,238,0.92);
+    backdrop-filter: blur(8px);
+    border: 0.5px solid var(--border);
+    padding: 1.2rem 1.5rem;
+    max-width: 280px;
+  }
+
+  .hero-overlay blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--deep);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-overlay cite {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* STATS STRIP */
+  .stats-strip {
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat-item {
+    padding: 3.2rem 2rem;
+    text-align: center;
+    border-right: 0.5px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.8rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--deep);
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--deep);
+    opacity: 0.65;
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 5rem; }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--aurora-violet); }
+
+  /* ABOUT */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-image-wrap { position: relative; }
+
+  .about-image {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-accent {
+    position: absolute;
+    top: -1.5rem;
+    right: -1.5rem;
+    width: 50%;
+    aspect-ratio: 1;
+    border: 0.5px solid var(--aurora-teal);
+    z-index: -1;
+  }
+
+  .about-text p {
+    color: var(--deep);
+    opacity: 0.75;
+    margin-bottom: 1.2rem;
+    font-size: 0.97rem;
+    line-height: 1.9;
+  }
+
+  .about-aurora-note {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-left: 2px solid var(--aurora-teal);
+    background: rgba(91,168,160,0.06);
+  }
+
+  .about-aurora-note p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--deep);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* COLLECTIONS */
+  .collections-section { background: var(--deep); color: var(--cream); }
+  .collections-section .section-title { color: var(--cream); }
+  .collections-section .section-eyebrow { color: rgba(247,243,238,0.75); }
+  .collections-section .section-title em { color: var(--gold); }
+
+  .collections-intro {
+    color: rgba(247,243,238,0.85);
+    max-width: 500px;
+    margin-bottom: 3.5rem;
+    font-size: 0.97rem;
+    line-height: 1.9;
+  }
+
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    margin-top: 3rem;
+  }
+
+  .collection-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    cursor: pointer;
+    background: #2a2620;
+  }
+
+  .collection-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease, opacity 0.4s;
+    opacity: 0.8;
+  }
+
+  .collection-card:hover img {
+    transform: scale(1.04);
+    opacity: 0.65;
+  }
+
+  .collection-card-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 2rem 1.5rem 1.5rem;
+    background: linear-gradient(transparent, rgba(28,26,23,0.85));
+  }
+
+  .collection-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--cream);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .collection-card-count {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(247,243,238,0.82);
+  }
+
+  .collection-card-tag {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    color: var(--gold);
+    border: 0.5px solid var(--gold);
+  }
+
+  /* AURORA PALETTE strip */
+  .aurora-palette {
+    display: flex;
+    margin-top: 3rem;
+    gap: 0;
+  }
+
+  .aurora-swatch {
+    flex: 1;
+    height: 4px;
+  }
+
+  /* PROCESS */
+  .process-section { border-top: 0.5px solid var(--border); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .process-step { position: relative; }
+
+  .process-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(28,26,23,0.08);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .process-title {
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    color: var(--deep);
+  }
+
+  .process-desc {
+    font-size: 0.9rem;
+    color: var(--deep);
+    opacity: 0.72;
+    line-height: 1.8;
+  }
+
+  .process-connector {
+    position: absolute;
+    top: 1.5rem;
+    right: -1rem;
+    width: 2rem;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  .process-step:last-child .process-connector { display: none; }
+
+  /* REVIEWS */
+  .reviews-section { background: #F0EBE3; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .review-card {
+    background: var(--cream);
+    padding: 2rem;
+    border: 0.5px solid var(--border);
+  }
+
+  .review-stars {
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .review-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--deep);
+    margin-bottom: 1.2rem;
+  }
+
+  .review-author {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm);
+  }
+
+  /* TUTORIALS */
+  .tutorials-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+    min-height: 60vh;
+  }
+
+  .tutorials-left {
+    padding: 6rem 4rem 6rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .tutorials-right {
+    background: var(--aurora-teal);
+    padding: 6rem 5rem 6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .tutorials-right .section-title { color: white; }
+  .tutorials-right .section-title em { color: rgba(255,255,255,0.7); font-style: italic; }
+  .tutorials-right .section-eyebrow { color: rgba(255,255,255,0.6); }
+
+  .tutorial-list { list-style: none; margin-top: 2rem; }
+
+  .tutorial-item {
+    padding: 1rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .tutorial-item:hover { opacity: 0.75; }
+
+  .tutorial-name {
+    font-size: 0.95rem;
+    color: white;
+    font-weight: 300;
+  }
+
+  .tutorial-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.88);
+    border: 0.5px solid rgba(255,255,255,0.6);
+    padding: 0.2rem 0.6rem;
+  }
+
+  .tutorial-arrow {
+    color: white;
+    opacity: 0.85;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+  }
+
+  /* MEMBERSHIP / GUILD */
+  .guild-section {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 5rem;
+    align-items: center;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .guild-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .guild-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem;
+    font-weight: 300;
+    line-height: 0.9;
+    color: rgba(28,26,23,0.06);
+    text-align: center;
+  }
+
+  .guild-text p {
+    font-size: 0.97rem;
+    color: var(--deep);
+    opacity: 0.72;
+    line-height: 1.9;
+    margin-bottom: 1rem;
+  }
+
+  .socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .social-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--deep);
+    text-decoration: none;
+    border: 0.5px solid var(--border-hover);
+    padding: 0.5rem 1rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .social-link:hover { background: var(--deep); color: var(--cream); }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--deep);
+    color: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    padding: 6rem 5rem;
+  }
+
+  .contact-section .section-eyebrow { color: rgba(247,243,238,0.75); }
+  .contact-section .section-title { color: var(--cream); }
+  .contact-section .section-title em { color: var(--aurora-rose); }
+
+  .contact-info p {
+    color: rgba(247,243,238,0.82);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.88rem;
+    color: rgba(247,243,238,0.9);
+  }
+
+  .contact-detail strong {
+    font-weight: 400;
+    color: var(--cream);
+    min-width: 100px;
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-field label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(247,243,238,0.85);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    color: var(--cream);
+    padding: 0.8rem 1rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    border-color: rgba(91,168,160,0.6);
+  }
+
+  .form-field input::placeholder,
+  .form-field textarea::placeholder {
+    color: rgba(247,243,238,0.2);
+  }
+
+  .form-field textarea { height: 120px; resize: vertical; }
+
+  .form-submit {
+    display: inline-block;
+    background: var(--aurora-teal);
+    color: white;
+    border: none;
+    padding: 0.9rem 2.5rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover { background: #4a9590; transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: #141210;
+    color: rgba(247,243,238,0.7);
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  footer a { color: rgba(247,243,238,0.7); text-decoration: none; }
+  footer a:hover { color: rgba(247,243,238,0.95); }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: rgba(247,243,238,0.88);
+    font-weight: 300;
+  }
+
+  /* AURORA LIGHT DECORATION */
+  .aurora-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .aurora-beam {
+    position: absolute;
+    width: 2px;
+    height: 40%;
+    top: 20%;
+    opacity: 0.15;
+    animation: drift 8s ease-in-out infinite;
+  }
+
+  @keyframes drift {
+    0%, 100% { transform: translateX(0) rotate(15deg); opacity: 0.1; }
+    50% { transform: translateX(20px) rotate(18deg); opacity: 0.2; }
+  }
+
+  /* Scroll fade-in */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 2rem 3rem; }
+    .hero-right { height: 60vw; }
+    section { padding: 4rem 2rem; }
+    .about { grid-template-columns: 1fr; gap: 2rem; }
+    .stats-strip { grid-template-columns: repeat(2, 1fr); }
+    .collections-grid { grid-template-columns: 1fr 1fr; }
+    .process-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .tutorials-section { grid-template-columns: 1fr; }
+    .tutorials-right { padding: 4rem 2rem; }
+    .tutorials-left { padding: 4rem 2rem; }
+    .guild-section { grid-template-columns: 1fr; gap: 1rem; }
+    .contact-section { grid-template-columns: 1fr; padding: 4rem 2rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Beaded <span>Aurora</span></a>
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#about">About Jayne</a></li>
+    <li><a href="#tutorials">Tutorials</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left reveal">
+    <p class="hero-eyebrow">Handcrafted in Lincolnshire · Est. 2007</p>
+    <h1 class="hero-title">
+      Beadwork woven<br>with <em>light</em> and<br>care
+    </h1>
+    <p class="hero-sub">
+      Seed bead jewellery, home decor, and tutorials — each piece inspired by the dancing colours of the Aurora Borealis.
+    </p>
+    <div class="hero-actions">
+      <a href="#collections" class="btn-primary">Explore Collections</a>
+      <a href="https://www.etsy.com/shop/BeadedAurora" class="btn-ghost" target="_blank">Visit Etsy Shop ↗</a>
+    </div>
+    <div class="hero-badges">
+      <span class="hero-badge">5.0 ★ from 70 verified reviews</span>
+      <span class="hero-badge">17 years on Etsy · 249 sales</span>
+      <span class="hero-badge">Member of The Beadworkers Guild</span>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img
+      class="hero-image"
+      src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=900&auto=format&fit=crop&q=80"
+      alt="Beaded jewellery and home decor on a warm wooden surface"
+    />
+    <div class="hero-overlay">
+      <blockquote>"The beautiful dancing lights will be forever etched in my memory."</blockquote>
+      <cite>— Jayne, on the Aurora that named this shop</cite>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip reveal">
+  <div class="stat-item">
+    <div class="stat-number">249</div>
+    <div class="stat-label">Happy Customers</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">5.0</div>
+    <div class="stat-label">Average Rating</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">17</div>
+    <div class="stat-label">Years on Etsy</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">70+</div>
+    <div class="stat-label">Written Reviews</div>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="collections-section" id="collections">
+  <div class="reveal">
+    <p class="section-eyebrow">What I Make</p>
+    <h2 class="section-title">Crafted to be <em>treasured</em></h2>
+    <p class="collections-intro">
+      From intricate beaded baubles to delicate jewellery and handwritten stitch guides — every item is made with patience, seed beads, and a love of colour.
+    </p>
+  </div>
+
+  <div class="collections-grid reveal">
+    <div class="collection-card">
+      <img src="https://images.unsplash.com/photo-1604542031658-5799ca5d7936?w=600&auto=format&fit=crop&q=80" alt="Beaded home decor baubles" />
+      <div class="collection-card-label">
+        <span class="collection-card-name">Home Decor & Baubles</span>
+        <span class="collection-card-count">Beaded baubles, ornaments & displays</span>
+      </div>
+      <div class="collection-card-tag">Bestseller</div>
+    </div>
+    <div class="collection-card">
+      <img src="https://images.unsplash.com/photo-1619119069152-a2b331eb392a?w=600&auto=format&fit=crop&q=80" alt="Seed bead jewellery" />
+      <div class="collection-card-label">
+        <span class="collection-card-name">Jewellery & Accessories</span>
+        <span class="collection-card-count">Necklaces, chains & stitch markers</span>
+      </div>
+    </div>
+    <div class="collection-card">
+      <img src="https://i.etsystatic.com/1814808491/r/il/e5c331/1814808491/il_340x270.1814808491_4dkd.jpg" alt="Bead weaving tutorial patterns" style="object-position: center top;" />
+      <div class="collection-card-label">
+        <span class="collection-card-name">Patterns & Tutorials</span>
+        <span class="collection-card-count">Digital PDF guides for all levels</span>
+      </div>
+      <div class="collection-card-tag">Digital</div>
+    </div>
+  </div>
+
+  <div class="aurora-palette" aria-hidden="true">
+    <div class="aurora-swatch" style="background:#4FC3BB;"></div>
+    <div class="aurora-swatch" style="background:#6DBFC5;"></div>
+    <div class="aurora-swatch" style="background:#8BBCCE;"></div>
+    <div class="aurora-swatch" style="background:#A9B8D1;"></div>
+    <div class="aurora-swatch" style="background:#C8A8C9;"></div>
+    <div class="aurora-swatch" style="background:#D490A8;"></div>
+    <div class="aurora-swatch" style="background:#C47E8A;"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section style="padding: 6rem 5rem;" id="about">
+  <div class="about">
+    <div class="about-image-wrap reveal">
+      <img
+        class="about-image"
+        src="https://images.unsplash.com/photo-1616400619175-5beda3a17896?w=700&auto=format&fit=crop&q=80"
+        alt="Beadwork in progress — seed beads and thread on a workspace"
+      />
+      <div class="about-accent"></div>
+    </div>
+    <div class="about-text reveal">
+      <p class="section-eyebrow">About Jayne</p>
+      <h2 class="section-title">A <em>beadaholic</em><br>from Lincolnshire</h2>
+      <p>My name is Jayne and I've had a lifelong love of making things. I discovered seed beadweaving in 2007 at a local workshop and never looked back — falling completely in love with the precision, the colour, and the meditative pace of it all.</p>
+      <p>Over seventeen years I've mastered techniques from peyote stitch to right-angle weave, though my greatest joy remains beaded baubles and home decor. I'm a proud member of The Beadworkers Guild, where I attend a monthly group with fellow enthusiasts.</p>
+      <p>My shop name was born on a trip to Norway in 2016 — the first time I witnessed the Northern Lights arc across the sky. The colours of that memory live in every piece I make.</p>
+      <div class="about-aurora-note">
+        <p>"The beautiful dancing lights of the Aurora Borealis will be forever etched in my memory — and the colours of my logo are inspired by them."</p>
+      </div>
+      <div class="socials" style="margin-top:2rem;">
+        <a href="http://facebook.com/beadedaurora" class="social-link" target="_blank">Facebook</a>
+        <a href="http://instagram.com/beadedaurora" class="social-link" target="_blank">Instagram</a>
+        <a href="http://twitter.com/beadedaurora" class="social-link" target="_blank">Twitter / X</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="reveal">
+    <p class="section-eyebrow">The Making Process</p>
+    <h2 class="section-title">From bead to <em>beauty</em></h2>
+  </div>
+  <div class="process-grid reveal">
+    <div class="process-step">
+      <div class="process-connector"></div>
+      <div class="process-number">01</div>
+      <div class="process-title">Inspiration</div>
+      <p class="process-desc">Colours from nature, travel, and the Aurora guide every palette. No two pieces are identical.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-connector"></div>
+      <div class="process-number">02</div>
+      <div class="process-title">Materials</div>
+      <p class="process-desc">Only quality seed beads, thread, and wire — chosen for longevity and a satisfying, jewel-like finish.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-connector"></div>
+      <div class="process-number">03</div>
+      <div class="process-title">Handweaving</div>
+      <p class="process-desc">Each stitch placed by hand — peyote, brick, herringbone or right-angle weave — at a calm, deliberate pace.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-number">04</div>
+      <div class="process-title">Delivery</div>
+      <p class="process-desc">Carefully packaged and shipped from Lincolnshire, with love and a personal touch in every order.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="reveal">
+    <p class="section-eyebrow">Customer Words</p>
+    <h2 class="section-title">Made to be <em>loved</em></h2>
+  </div>
+  <div class="reviews-grid reveal">
+    <div class="review-card">
+      <div class="review-stars">★ ★ ★ ★ ★</div>
+      <p class="review-text">"Great PDF, was able to hand them out during a workshop and had no issues at all."</p>
+      <span class="review-author">Lydia — March 2025</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★ ★ ★ ★ ★</div>
+      <p class="review-text">"Easy, but super effective and addictive. I've already started my second bauble!"</p>
+      <span class="review-author">Anna — November 2024</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★ ★ ★ ★ ★</div>
+      <p class="review-text">"Lovely little baubles — a very adaptable pattern, great for using up leftover beads."</p>
+      <span class="review-author">Susan — September 2024</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★ ★ ★ ★ ★</div>
+      <p class="review-text">"It's super cute. Exactly what I was hoping for — beautiful daisy chain detail."</p>
+      <span class="review-author">Chloe — December 2023</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★ ★ ★ ★ ★</div>
+      <p class="review-text">"Very pretty pattern with instructions that are easy to follow. Quick to download. Highly recommend this shop."</p>
+      <span class="review-author">Bobbie — November 2023</span>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★ ★ ★ ★ ★</div>
+      <p class="review-text">"Lovely progress keeper. Great price and really thoughtful design — perfect gift for a knitting friend."</p>
+      <span class="review-author">Ruth — March 2024</span>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORIALS SPLIT -->
+<section class="tutorials-section" id="tutorials" style="padding:0;">
+  <div class="tutorials-left reveal">
+    <p class="section-eyebrow">Digital Downloads</p>
+    <h2 class="section-title">Learn to<br>bead at home</h2>
+    <p style="color:var(--deep); opacity:0.72; font-size:0.97rem; line-height:1.9; max-width:380px; margin-top:1rem;">
+      Step-by-step PDF tutorials written with care, tested in workshops, and loved by beginners and experienced beaders alike. Download instantly from Etsy.
+    </p>
+    <a href="https://www.etsy.com/shop/BeadedAurora" class="btn-primary" style="margin-top:2.5rem;" target="_blank">Browse All Patterns ↗</a>
+  </div>
+  <div class="tutorials-right reveal">
+    <p class="section-eyebrow" style="color:rgba(255,255,255,0.85);">Popular Tutorials</p>
+    <h2 class="section-title" style="color:white; margin-bottom:0.5rem;">Featured <em style="color:rgba(255,255,255,0.85);">guides</em></h2>
+    <ul class="tutorial-list">
+      <li class="tutorial-item">
+        <span class="tutorial-name">Mini Beaded Bauble Cover</span>
+        <span class="tutorial-tag">Beginner</span>
+        <span class="tutorial-arrow">→</span>
+      </li>
+      <li class="tutorial-item">
+        <span class="tutorial-name">Daisy Chain Glasses Cord</span>
+        <span class="tutorial-tag">Easy</span>
+        <span class="tutorial-arrow">→</span>
+      </li>
+      <li class="tutorial-item">
+        <span class="tutorial-name">Ball of Wool Stitch Marker</span>
+        <span class="tutorial-tag">Intermediate</span>
+        <span class="tutorial-arrow">→</span>
+      </li>
+      <li class="tutorial-item">
+        <span class="tutorial-name">Seed Bead Christmas Ornament</span>
+        <span class="tutorial-tag">Beginner</span>
+        <span class="tutorial-arrow">→</span>
+      </li>
+      <li class="tutorial-item">
+        <span class="tutorial-name">Aurora Peyote Bangle</span>
+        <span class="tutorial-tag">Advanced</span>
+        <span class="tutorial-arrow">→</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- GUILD -->
+<section class="guild-section">
+  <div class="guild-logo reveal" aria-hidden="true">
+    <img src="https://www.beadworkersguild.com/wp-content/uploads/2020/11/logo-150x150.png" alt="The Beadworkers Guild logo" style="width:150px; height:150px; object-fit:contain; opacity:0.85;" />
+  </div>
+  <div class="guild-text reveal">
+    <p class="section-eyebrow">Professional Membership</p>
+    <h2 class="section-title">Proud member of<br>The <em>Beadworkers Guild</em></h2>
+    <p>The Beadworkers Guild is the UK's leading community for bead artists — dedicated to the craft, education, and advancement of beadwork as an art form. Membership means a commitment to quality and a love of continual learning.</p>
+    <p>Each month I meet with my local guild group, sharing techniques and inspiration with fellow enthusiasts. That community spirit flows into everything I create and teach.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-info reveal">
+    <p class="section-eyebrow">Say Hello</p>
+    <h2 class="section-title">Get in <em>touch</em></h2>
+    <p>Whether you have a question about an item, a custom order in mind, or just want to talk beads — Jayne would love to hear from you.</p>
+    <div class="contact-detail">
+      <div>
+        <strong>Email</strong>
+        <span>beadedaurora@outlook.com</span>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div>
+        <strong>Location</strong>
+        <span>Lincoln, Lincolnshire, United Kingdom</span>
+      </div>
+    </div>
+    <div class="contact-detail">
+      <div>
+        <strong>Etsy Shop</strong>
+        <a href="https://www.etsy.com/shop/BeadedAurora" style="color:var(--aurora-teal); text-decoration:none;" target="_blank">etsy.com/shop/BeadedAurora ↗</a>
+      </div>
+    </div>
+    <div class="contact-detail" style="margin-top:1.5rem; font-size:0.82rem; color:rgba(247,243,238,0.85);">
+      <span>✦ Shop returns 1st July 2026 after a short break</span>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="Jane Smith" />
+        </div>
+        <div class="form-field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="jane@example.com" />
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" placeholder="Custom order enquiry" />
+      </div>
+      <div class="form-field">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell Jayne what's on your mind…"></textarea>
+      </div>
+      <button class="form-submit" type="button">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Beaded Aurora</span>
+  <span>Handcrafted bead art from Lincolnshire · Est. 2007</span>
+  <span>© 2025 Jayne Hancock · <a href="https://www.etsy.com/shop/BeadedAurora" target="_blank">Etsy Shop</a></span>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Trigger hero items immediately
+  document.querySelectorAll('.hero .reveal, .stats-strip.reveal').forEach(el => {
+    el.classList.add('visible');
+  });
+
+  document.querySelector('.form-submit').addEventListener('click', () => {
+    const btn = document.querySelector('.form-submit');
+    btn.textContent = 'Message Sent ✦';
+    btn.style.background = '#4a9590';
+    btn.disabled = true;
+  });
+</script>
+</body>
+</html>
